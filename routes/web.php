@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mainPage');
+});
+
+Route::get('/create', function (){
+   return view('createPost');
+});
+
+Route::get('/show', function (){
+   return view('showPost');
+});
+
+Route::get('/edit', function (){
+    return view ('editPost');
+});
+
+Route::post('/store', function (Request $request){
+   $image = $request->file('image');
+   dd(public_path());
+   dd($image->store());
+//    dd($image);
 });
