@@ -1,5 +1,8 @@
 quick-start:
-	docker compose up && docker compose exec node npm install && docker compose exec node npm run dev
+	docker compose up --build -d &&
+	docker compose exec php-cli composer install &&
+	docker compose exec php-cli php artisan migrate &&
+	docker compose exec php-cli php artisan db:seed
 
 up:
 	docker compose up -d && docker compose exec node npm run dev
