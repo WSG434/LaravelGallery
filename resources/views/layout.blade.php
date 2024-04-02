@@ -21,10 +21,8 @@
     <meta name="theme-color" content="#712cf9">
     <!-- Custom styles for this template -->
     <link href="navbar-static.css" rel="stylesheet">
-{{--    <link rel="stylesheet" href="css/style.css">--}}
     <link rel="stylesheet" href="css/app.css">
-    @vite('resources/css/app.css')
-
+{{--    @vite('resources/css/app.css')--}}
 </head>
 <body>
 
