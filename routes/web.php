@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ImagesController::class, 'index']);
-Route::get('/create', [ImagesController::class,'addPost']);
-Route::get('/show/{id}', [ImagesController::class,'showPost']);
-Route::get('/edit/{id}', [ImagesController::class,'editPost']);
-Route::get('/delete/{id}', [ImagesController::class,'deletePost']);
+Route::get('/', [PostsController::class, 'index']);
+Route::get('/create', [PostsController::class,'newPost']);
+Route::get('/show/{id}', [PostsController::class,'showPost']);
+Route::get('/edit/{id}', [PostsController::class,'editPost']);
+Route::get('/delete/{id}', [PostsController::class,'deletePost']);
 
-Route::post('/store', [ImagesController::class, 'storePost']);
-Route::post('/update/{id}', [ImagesController::class, 'updatePost']);
+Route::post('/store', [PostsController::class, 'storePost']);
+Route::post('/update/{id}', [PostsController::class, 'updatePost']);
 
 
