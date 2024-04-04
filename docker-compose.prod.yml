@@ -15,6 +15,8 @@ services:
     links:
       - php-fpm
       - node
+    networks:
+      - my-net
 
   php-fpm:
     build:
@@ -33,6 +35,8 @@ services:
       - node
     extra_hosts:
         - "host.docker.internal:host-gateway"
+    networks:
+      - my-net
 
   php-cli:
     build:
@@ -47,6 +51,8 @@ services:
     links:
       - mysql
     tty: true
+    networks:
+      - my-net
 
   mysql:
     image: mysql:8.0
@@ -58,7 +64,10 @@ services:
       - "MYSQL_PASSWORD=12345678"
       - "MYSQL_DATABASE=laravel"
     ports:
-    - "33061:3306"
+      - "8101:3306"
+    network:
+      - my-net
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -70,6 +79,9 @@ services:
     restart: always
     ports:
       - 8081:80
+    networks:
+      - my-net
+
   node:
     image: node:18-alpine
     ports:
@@ -78,6 +90,14 @@ services:
     - ./:/var/www
     working_dir: /var/www
     tty: true
+    networks:
+      - my-net
 
 volumes:
   database:
+
+networks:
+  my-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1400
