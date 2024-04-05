@@ -34,11 +34,11 @@ RUN ufw allow out 443/tcp
 #RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 #RUN php -r "unlink('composer-setup.php');"
 
-#COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-RUN curl -sS https://getcomposer.org/installer | php -- \
-    --filename=composer \
-    --install-dir=/usr/local/bin
+#RUN curl -sS https://getcomposer.org/installer | php -- \
+ #   --filename=composer \
+  #  --install-dir=/usr/local/bin
 
 
 #RUN curl -sS https://getcomposer.org/installer | php

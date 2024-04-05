@@ -65,7 +65,7 @@ services:
       - "MYSQL_DATABASE=laravel"
     ports:
       - "8101:3306"
-    network:
+    networks:
       - my-net
 
   phpmyadmin:
