@@ -19,9 +19,8 @@ RUN docker-php-ext-install exif
 RUN docker-php-ext-enable exif
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
-RUN composer install
 
-#RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/local/bin
+RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/local/bin
 
 COPY ./conf.d/* /usr/local/etc/php/conf.d/
 COPY ./php.ini /usr/local/etc/php/
