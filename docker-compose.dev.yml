@@ -18,7 +18,7 @@ services:
 
   php-fpm:
     build:
-      context: ./docker/php-fpm
+      context: ./docker/php/dev/php-fpm
       dockerfile: Dockerfile
     volumes:
       - ./:/var/www
@@ -36,8 +36,8 @@ services:
 
   php-cli:
     build:
-      context: ./
-      dockerfile: docker/php-cli.docker
+      context: ./docker/php/dev/php-cli
+      dockerfile: Dockerfile
     volumes:
     - ./:/var/www
     environment:
@@ -59,6 +59,7 @@ services:
       - "MYSQL_DATABASE=laravel"
     ports:
     - "33061:3306"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -70,6 +71,7 @@ services:
     restart: always
     ports:
       - 8081:80
+
   node:
     image: node:18-alpine
     ports:
@@ -78,6 +80,3 @@ services:
     - ./:/var/www
     working_dir: /var/www
     tty: true
-
-volumes:
-  database:
