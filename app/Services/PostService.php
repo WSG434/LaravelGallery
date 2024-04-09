@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\EmptyFileUploadException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,6 +33,10 @@ class PostService
 
     public function add($file)
     {
+        if (is_null($file)) {
+            throw new EmptyFileUploadException();
+        }
+
         $filename = $file->store('images');
         DB::table('images')->insert([
             'image' => $filename
