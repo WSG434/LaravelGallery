@@ -1,3 +1,4 @@
+
 <h1 align="center">LaravelGallery 🖼️ </h1>
   <h3 align="center">Granular project for skills demo </h3>
 

@@ -24,8 +24,6 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 COPY ./conf.d/* /usr/local/etc/php/conf.d/
-COPY ./php.ini /usr/local/etc/php/
-
 
 WORKDIR /var/www
 
